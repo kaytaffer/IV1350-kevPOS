@@ -72,8 +72,7 @@ public class Item {
     public double getRateOfVAT() {
         return rateOfVAT;
     }
-    
-    
+
             /**
          * Set new <code>quantity</code> of the <code>Item</code>.
          * @param quantity the new quantity to be set.

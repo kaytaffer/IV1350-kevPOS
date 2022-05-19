@@ -1,8 +1,10 @@
 package se.kth.iv1350.kevpos.model;
 
 import java.util.ArrayList;
+import se.kth.iv1350.kevpos.integration.DatabaseUnreachableException;
 import se.kth.iv1350.kevpos.integration.ItemDTO;
 import se.kth.iv1350.kevpos.integration.InventoryHandler;
+import se.kth.iv1350.kevpos.integration.ItemNotFoundException;
 
 /**
  * Contains and manages <code>ItemDTO</code>s for the current <code>Sale</code>.
@@ -10,7 +12,6 @@ import se.kth.iv1350.kevpos.integration.InventoryHandler;
 public class CheckoutCart {
 
     	private InventoryHandler inventoryHandler;
-	private boolean errorNoItem;
         private boolean firstItemEver;
 	private ArrayList<Item> listOfItems;
         
@@ -22,27 +23,24 @@ public class CheckoutCart {
  */
 	public CheckoutCart(InventoryHandler inventoryHandler) {
                 this.inventoryHandler = inventoryHandler;
-		this.errorNoItem = false;
                 this.firstItemEver = true;
-                this.listOfItems = new ArrayList<Item>();
+                this.listOfItems = new ArrayList<>();
 	}
         /**
          * Checks if requested <code>Item</code> exists, and if so, adds the <code>Item</code> to the cart.
          * @param itemRequest a proto-item, all values null except for <code>identifier</code>.
          * @return Either is null, indicating no match in the database, or 
          * contains all data of the requested <code>Item</code>.
+         * @throws <code>DatabaseUnreachableException</code> when a database cannot be reached.
+         * @throws <code>ItemNotFoundException</code> Thrown when an <code>ItemDTO</code>:s <code>identifier</code> does not match
+         * an identifier in the inventory database.
          */
-	public ItemDTO addItem(ItemDTO itemRequest) {
+	public ItemDTO addItem(ItemDTO itemRequest) throws DatabaseUnreachableException, ItemNotFoundException {
             ItemDTO scannedItem = inventoryHandler.constructItemDTO(itemRequest);
-            Item item;
-            if(scannedItem != null)
-            {
-                item = new Item(scannedItem);
-                addItemToCheckoutCart(item);
-            }
-            else
-                errorForItemNotFound();
+            Item item = new Item(scannedItem);
             
+            addItemToCheckoutCart(item);
+                
             return scannedItem;
 	}
         /**
@@ -62,6 +60,7 @@ public class CheckoutCart {
                 listOfItems.add(itemBeingAddedToCart);
             }
 	}
+        
         /**
          * Increases the quantity of Items of a given type in the cart. 
          * @param itemBeingAddedToCart new item of a given type to add to cart.
@@ -90,21 +89,12 @@ public class CheckoutCart {
             return -1;
         }
         
-
-        /**
-         * Unimplemented
-         * @return false, we don't handle exceptions yet
-         */
-	private boolean errorForItemNotFound() {
-		return false;
-	}
-        
         /**
          * Get the <code>listOfItems</code> in the current cart.
          * @return the current shopping list.
          */
-    protected final ArrayList<Item> getListOfItems() {
-        return listOfItems;
-    }
+        final ArrayList<Item> getListOfItems() {
+            return listOfItems;
+        }
         
 }

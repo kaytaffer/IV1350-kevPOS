@@ -31,16 +31,32 @@ public class InventoryHandler {
      * @param itemRequest a proto-item, all values null except for <code>identifier</code>.
      * and <code>quantity</code>.
      * @return a completed <code>ItemDTO</code> matched to the given <code>identifier</code>. If an invalid ID is attached to the <code>itemRequest</code>, a null valued <code>ItemDTO</code> is returned.
+     * @throws <code>DatabaseUnreachableException</code> when a database cannot be reached.
+     * @throws <code>ItemNotFoundException</code> Thrown when an <code>ItemDTO</code>:s <code>identifier</code> does not match
+     * an identifier in the inventory database.
      */
-    public ItemDTO constructItemDTO(ItemDTO itemRequest) {
+    public ItemDTO constructItemDTO(ItemDTO itemRequest) throws DatabaseUnreachableException, ItemNotFoundException{
         int itemIdentifier = itemRequest.getIdentifier();
-        ItemDTO scannedItem;
         
-        if(itemIdentifier < 0 || itemIdentifier > 5)
-            return scannedItem = null;
-        else
-            return scannedItem = new ItemDTO(itemIdentifier, itemRequest.getQuantity(), fakeItemList[itemIdentifier].getName(), fakeItemList[itemIdentifier].getDescription(), fakeItemList[itemIdentifier].getPrice(), fakeItemList[itemIdentifier].getRateOfVAT());
+        connectToInventoryDatabase(itemRequest);
+        try{
+        ItemDTO scannedItem = new ItemDTO(itemIdentifier, itemRequest.getQuantity(), fakeItemList[itemIdentifier].getName(), 
+                fakeItemList[itemIdentifier].getDescription(), fakeItemList[itemIdentifier].getPrice(), 
+                fakeItemList[itemIdentifier].getRateOfVAT());
+        return scannedItem;
+        }
+        catch (ArrayIndexOutOfBoundsException e)
+        {
+            throw new ItemNotFoundException(itemRequest);
+        }
     }
+        
+    private void connectToInventoryDatabase(ItemDTO itemRequest)throws DatabaseUnreachableException {
+        int forbiddenIdentifier = 404;
+        if(itemRequest.getIdentifier() == forbiddenIdentifier)
+            throw new DatabaseUnreachableException();
+    }
+   
 
     /**
      * Placeholder for the call to log all inventory changes in the external inventory system.

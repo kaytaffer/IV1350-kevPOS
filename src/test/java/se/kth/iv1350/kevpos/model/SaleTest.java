@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Disabled;
 import se.kth.iv1350.kevpos.integration.DiscountHandler;
 import se.kth.iv1350.kevpos.integration.InventoryHandler;
 import se.kth.iv1350.kevpos.integration.ItemDTO;
+import se.kth.iv1350.kevpos.integration.ItemNotFoundException;
 
 
 public class SaleTest {
@@ -55,7 +56,11 @@ public class SaleTest {
     @Test
     public void testUpdateRunningTotalReturnsAShoppingCart() {
         String expectedValue = "Chocolate";
+        try{
         checkoutCart.addItem(scannedItem);
+        }
+        catch(ItemNotFoundException e)
+        {}
         SaleStateDTO saleState = sale.updateRunningTotal(scannedItem);
         String actual = saleState.getListOfItems().get(0).getName();
         

@@ -1,7 +1,6 @@
 package se.kth.iv1350.kevpos.model;
 
 import java.util.ArrayList;
-import se.kth.iv1350.kevpos.integration.InventoryHandler;
 import se.kth.iv1350.kevpos.integration.DiscountHandler;
 import se.kth.iv1350.kevpos.integration.ItemDTO;
 
@@ -75,10 +74,6 @@ public class Sale {
 
 	private Sale updateRunningTotal(double discount) {
 		return null;
-	}
-
-	public void finalizeSaleInfo(double receivedPayment, double change) {
-
 	}
 
 	private java.time.LocalTime logDateAndTimeForSale() {

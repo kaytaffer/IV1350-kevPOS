@@ -1,16 +1,15 @@
 
 package se.kth.iv1350.kevpos.integration;
 
-import se.kth.iv1350.kevpos.model.RegisterObserver;
-import se.kth.iv1350.kevpos.util.FileOutputter;
+import java.io.FileWriter;
+import java.io.IOException;
+import se.kth.iv1350.kevpos.model.RegisterObserverTemplate;
 
 /**
  * Handles the logging to a file, of the total revenue since the start of the
  * application
  */
-public class TotalRevenueFileOutput extends FileOutputter implements RegisterObserver{
-    
-    private double balance;
+public class TotalRevenueFileOutput extends RegisterObserverTemplate{
     
     /**
      * Creates an instance of the <code>TotalRevenueFileOutput</code>
@@ -20,31 +19,27 @@ public class TotalRevenueFileOutput extends FileOutputter implements RegisterObs
     }
     
     /**
-     * This listener is made aware that the total revenue has changed.
-     * @param balance the new total income.
+     * Shows the total income, the current balance in the <code>Register<code> 
+     * to a file.
+     * @param balance The current total income.
+     * @throws java.io.IOException if something went wrong when trying to write
+     * to the file.
      */
     @Override
-    public void notifyObserversBalanceHasChanged(double balance) {
-        this.balance = balance;
-        createLogEntry();
-    }
-    
+    protected void doShowTotalIncome(double balance) throws IOException{ 
+        FileWriter writer = new FileWriter("totalRevenue.txt", true);
+        writer.append("Today's total revenue is: " + balance + " money units.\n");
+        writer.close();                
+    } 
+
     /**
-     * Gets an Object-specific message to print.
-     * @return the message to print to the log.
+     * Handles any thrown exceptions by printing the stack trace.
+     * @param exception The thrown error to be handled
      */
     @Override
-    protected String addMessage(){
-        return "Today's total revenue is: " + balance + " money units.\n";
-    }
-    
-    /**
-     * Gets the name of the txt file to log to.
-     * @return the name of the txt file to log to.
-     */
-    @Override
-    protected String generateLogName(){
-        return "totalRevenue.txt";
+    protected void handleErrors (Exception exception)
+    {
+        exception.printStackTrace();
     }
 }
 

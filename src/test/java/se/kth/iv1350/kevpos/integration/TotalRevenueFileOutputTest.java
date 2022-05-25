@@ -49,9 +49,9 @@ public class TotalRevenueFileOutputTest {
             }
             reader.close();
         } catch (FileNotFoundException ex) {
-            ex.printStackTrace();   
+               
         } catch (IOException ex) {
-            ex.printStackTrace();
+            
         }
         
         String output = sb.toString();

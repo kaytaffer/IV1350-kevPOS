@@ -40,8 +40,10 @@ public class CheckoutCartTest {
         
         assertNotNull(scannedItem, "failed to return data in return object");
         }
-        catch(ItemNotFoundException itemNotFoundException)
-        {itemNotFoundException.printStackTrace();}
+        catch(ItemNotFoundException itemNotFoundException){
+            
+        }
+        
     }
     
     
@@ -54,7 +56,7 @@ public class CheckoutCartTest {
         assertTrue(receivedRateOfVAT == 0.25 || receivedRateOfVAT == 0.12 || receivedRateOfVAT == 0.06  ,"Method return invalid VAT-Rate");
         }
         catch(ItemNotFoundException itemNotFoundException)
-        {itemNotFoundException.printStackTrace();}
+        {}
     }
     
         
@@ -103,7 +105,7 @@ public class CheckoutCartTest {
             fail("Method did not return the expected exception.");
         } 
         catch (DatabaseUnreachableException databaseUnreachableException) {
-            databaseUnreachableException.printStackTrace();
+            
         }
         catch (Exception exception){
             fail("Method throws the wrong exception.");

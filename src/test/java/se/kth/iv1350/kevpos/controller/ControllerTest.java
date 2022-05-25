@@ -21,11 +21,12 @@ public class ControllerTest {
     InventoryHandler inventoryHandler; 
     CheckoutCart checkoutCart;
     DiscountHandler discountHandler;
-    Sale sale;
-    ItemDTO itemRequest;
+        SalesLog salesLog;
     Controller controller;
+    ItemDTO itemRequest;
+
     AccountingHandler accountingHandler;
-    SalesLog salesLog;
+    Sale sale;
     Register register;
 
     
@@ -68,8 +69,8 @@ public class ControllerTest {
         
         assertEquals(expectedValue, actual, "The returned item is not identical");
                 }
-        catch(InvalidInputException e)
-        {e.printStackTrace();}
+        catch(InvalidInputException e) {
+        }
     }
 
     /**
@@ -89,7 +90,7 @@ public class ControllerTest {
         
                 }
         catch(InvalidInputException e)
-        {e.printStackTrace();}
+        {}
     }
     
         /**
@@ -107,7 +108,7 @@ public class ControllerTest {
         assertEquals(expectedValue, actual, "The returned VAT is not the same as the expected");
                 }
         catch(InvalidInputException e)
-        {e.printStackTrace();}
+        {}
     }
     
     /**
@@ -122,7 +123,7 @@ public class ControllerTest {
         fail("The method did not throw an expected exception.");
     }
         catch(InvalidInputException invalidInputException){
-            invalidInputException.printStackTrace();
+            ;
         }
         catch(Exception exception){
             fail("A wrong type of exception was thrown.");
@@ -141,7 +142,7 @@ public class ControllerTest {
         fail("The method did not throw an expected exception.");
     }
         catch(InvalidInputException invalidInputException){
-            invalidInputException.printStackTrace();
+            ;
         }
         catch(Exception exception){
             fail("A wrong type of exception was thrown.");
@@ -161,7 +162,7 @@ public class ControllerTest {
             fail("Method did not return the expected exception.");
         } 
         catch (ConnectionFailedException connectionException) {
-            connectionException.printStackTrace();
+            
         }
         catch (Exception exception){
             fail("Method throw the wrong exception.");

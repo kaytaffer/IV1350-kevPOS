@@ -47,8 +47,11 @@ public class View {
                     toBePrintedOnScreen = controller.nextItem(itemDTO);
                     toScreenScannedItem(toBePrintedOnScreen);
                 }
-                catch(InvalidInputException | ConnectionFailedException exception){
-                    System.out.println(exception.getMessage());
+                catch(InvalidInputException exception){
+                    System.out.println("ERROR: You've entered something wrong. Please try again.");
+                }
+                catch(ConnectionFailedException exception){
+                    System.out.println("ERROR: Please reconnect and try again.");
                 }
             }
             
@@ -65,7 +68,7 @@ public class View {
             toScreenScannedItem(toBePrintedOnScreen);
             }
             catch(InvalidInputException invalidInputException){
-                System.out.println(invalidInputException.getMessage());
+                System.out.println("ERROR: You've entered something wrong. Please try again.");
             }
             
             paymentReceived = 60.0;
@@ -88,10 +91,10 @@ public class View {
          * @param toBePrintedOnScreen current state changes after an entered <code>Item</code> <code>identifier</code>.
          */
         private void toScreenScannedItem(SaleStateDTO toBePrintedOnScreen){
-            System.out.println("Latest scanned item: " + toBePrintedOnScreen.getScannedItemDTO().getName());
-            System.out.println("Description: It is " + toBePrintedOnScreen.getScannedItemDTO().getDescription());
-            System.out.println("Running total: " + toBePrintedOnScreen.getRunningTotal());
-            System.out.println("including VAT: " + toBePrintedOnScreen.getTotalVAT());
+            System.out.println("Latest scanned item: " + toBePrintedOnScreen.getScannedItemDTO().getName() 
+                    + "\n Description: It is " + toBePrintedOnScreen.getScannedItemDTO().getDescription()
+                    + "\n Running total: " + toBePrintedOnScreen.getRunningTotal()
+                    + "\n including VAT: " + toBePrintedOnScreen.getTotalVAT());
             System.out.println("-------------------------------");
         }
         
@@ -100,8 +103,7 @@ public class View {
          * @param receipt final data sent from the program after a concluded <code>Sale</code>.
          */
         private void toScreenSaleConcluded (ReceiptDTO receipt){
-            System.out.println();
-            System.out.println("-------------------------------");
+            System.out.println("\n -------------------------------");
             System.out.println("---Receipt---");
             
             System.out.println(receipt.getTimeForSale());
@@ -111,12 +113,12 @@ public class View {
             {
                 System.out.println(item.getQuantity() + "  " + item.getName() + "  " + item.getDescription() + "  " + item.getPrice()*item.getQuantity());
             }
-            System.out.println();
-            System.out.println("Total price: " + receipt.getTotalPrice());
-            System.out.println("Discount: " + receipt.getDiscount());
-            System.out.println("Received Payment: " + receipt.getReceivedPayment());
-            System.out.println("Change: " + receipt.getChange());
-            System.out.println("-------------------------------");
+            System.out.println("\n"
+                + "Total price: " + receipt.getTotalPrice()
+                + "\n Discount: " + receipt.getDiscount()
+                + "\n Received Payment: " + receipt.getReceivedPayment()
+                + "\n Change: " + receipt.getChange()
+                + "\n -------------------------------");
         }
 
 }

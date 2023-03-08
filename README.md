@@ -5,27 +5,43 @@ Code and tests for a Point-Of-Sale program in a course for Object Oriented Desig
 
 ## controller
 `ConnectionFailedException.java` - 
+
 `Controller.java` - 
+
 `InvalidInputException.java` - 
 
 ## integration
 `AccountingHandler.java` - 
+
 `DatabaseUnreachableException.java` - 
+
 `DiscountHandler.java` - 
+
 `InventoryHandler.java` - 
+
 `ItemDTO.java` - 
+
 `ItemNotFoundException.java` - 
+
 `SalesLog.java` - 
+
 `TotalRevenueFileOutput.java` - 
 
 ## model
 `CheckoutCart.java` - 
+
 `Item.java` - 
+
 `PaymentInfoDTO.java` - 
+
 `RecepitDTO.java` - 
+
 `Register.java` - 
+
 `RegisterObserver.java` - 
+
 `Sale.java` - 
+
 `SaleStateDTO.java` - 
 
 ## startup
@@ -33,10 +49,12 @@ Code and tests for a Point-Of-Sale program in a course for Object Oriented Desig
 
 ## util
 `ExceptionLogger.java` - 
+
 `FileOutputter.java` - 
 
 ## view
 `TotalRevenueView.java` - 
+
 `View.java` - 
 
 # test

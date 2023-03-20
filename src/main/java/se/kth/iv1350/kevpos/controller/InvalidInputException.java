@@ -11,7 +11,5 @@ public class InvalidInputException extends Exception {
      */    
     public InvalidInputException(Exception originalException){
         super("ERROR: You've entered something wrong. Please try again.", originalException);
-        
     }
-    
 }

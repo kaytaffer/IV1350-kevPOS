@@ -1,16 +1,22 @@
+
 # kevPOS
 Code and tests for a Point-Of-Sale program in a course for Object Oriented Design at KTH
 
-# main
+# Design/
+UML design documents related to the project
+
+# src/main/
 
 ## controller
-`ConnectionFailedException.java` - 
 
-`Controller.java` - 
+`ConnectionFailedException.java` - Thrown when there is some connection error.
 
-`InvalidInputException.java` - 
+`Controller.java` - Handles all calls from the `View` to the `Model`. This is the application's only controller.
+
+`InvalidInputException.java` - Thrown when the input from the user is not valid.
 
 ## integration
+
 `AccountingHandler.java` - 
 
 `DatabaseUnreachableException.java` - 
@@ -28,6 +34,7 @@ Code and tests for a Point-Of-Sale program in a course for Object Oriented Desig
 `TotalRevenueFileOutput.java` - 
 
 ## model
+
 `CheckoutCart.java` - 
 
 `Item.java` - 
@@ -45,24 +52,21 @@ Code and tests for a Point-Of-Sale program in a course for Object Oriented Desig
 `SaleStateDTO.java` - 
 
 ## startup
-`Main.java` - 
 
-## util
+`Main.java` - Starts the entire application and sets up initial classes for later use.
+
+## util/
+
 `ExceptionLogger.java` - 
 
 `FileOutputter.java` - 
 
 ## view
+
 `TotalRevenueView.java` - 
 
 `View.java` - 
 
-# test
+# src/test
 
-## controller
-
-## integration
-
-## model
-
-## view
+Unit tests for the classes in the source code.

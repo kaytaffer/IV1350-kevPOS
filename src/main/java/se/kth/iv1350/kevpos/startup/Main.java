@@ -16,7 +16,7 @@ import se.kth.iv1350.kevpos.view.TotalRevenueView;
 public class Main {
         
        /** 
-        *  Starts the entire application and sets up initial classes for later use.
+        * Starts the entire application and sets up initial classes for later use.
         * @param args The application does not take any command line arguments
         */
 	public static void main(String[] args) {

@@ -1,12 +1,11 @@
 package se.kth.iv1350.kevpos.integration;
 
 import java.util.ArrayList;
-import se.kth.iv1350.kevpos.integration.ItemDTO;
 import se.kth.iv1350.kevpos.model.Item;
 import se.kth.iv1350.kevpos.model.SaleStateDTO;
 
 /**
- * An placeholder class representing an interface to an external system. The
+ * A placeholder class representing an interface to an external system. The
  * database is here hardcoded in the <code>fakeItemList</code>.
  */
 public class InventoryHandler {
@@ -27,12 +26,13 @@ public class InventoryHandler {
 
     /**
      * Matches an <code>ItemDTO</code> <code>identifier</code> with all its available data.
-     *
      * @param itemRequest a proto-item, all values null except for <code>identifier</code>.
      * and <code>quantity</code>.
-     * @return a completed <code>ItemDTO</code> matched to the given <code>identifier</code>. If an invalid ID is attached to the <code>itemRequest</code>, a null valued <code>ItemDTO</code> is returned.
-     * @throws <code>DatabaseUnreachableException</code> when a database cannot be reached.
-     * @throws <code>ItemNotFoundException</code> Thrown when an <code>ItemDTO</code>:s <code>identifier</code> does not match
+     * @return a completed <code>ItemDTO</code> matched to the given <code>identifier</code>. If an 
+     * invalid ID is attached to the <code>itemRequest</code>, a null valued <code>ItemDTO</code> 
+     * is returned.
+     * @throws DatabaseUnreachableException when a database cannot be reached.
+     * @throws ItemNotFoundException Thrown when an <code>ItemDTO</code>:s <code>identifier</code> does not match
      * an identifier in the inventory database.
      */
     public ItemDTO constructItemDTO(ItemDTO itemRequest) throws DatabaseUnreachableException, ItemNotFoundException{
@@ -50,20 +50,24 @@ public class InventoryHandler {
             throw new ItemNotFoundException(itemRequest);
         }
     }
-        
-    private void connectToInventoryDatabase(ItemDTO itemRequest)throws DatabaseUnreachableException {
-        int forbiddenIdentifier = 404;
-        if(itemRequest.getIdentifier() == forbiddenIdentifier)
+    
+    //Placeholder connection attempt to inventory database
+    private void connectToInventoryDatabase(ItemDTO itemRequest) throws DatabaseUnreachableException {
+        int nonexistingIdentifier = 404;
+        if(itemRequest.getIdentifier() == nonexistingIdentifier)
             throw new DatabaseUnreachableException();
     }
    
-
     /**
      * Placeholder for the call to log all inventory changes in the external inventory system.
-     * @param saleStateDTO the finalized info about the <code>Sale</code>.
+     * @param saleState the finalized info about the <code>Sale</code>.
      */
     public void sendInventoryInfo(SaleStateDTO saleState) {
         ArrayList<Item> listOfItemsBought = saleState.getListOfItems();
+        Item m;
+        for (Item i : listOfItemsBought) {
+            m = i;
+            i = m;
+        }
     }
-
 }

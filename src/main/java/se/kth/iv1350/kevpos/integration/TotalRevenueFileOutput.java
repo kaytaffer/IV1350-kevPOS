@@ -1,4 +1,3 @@
-
 package se.kth.iv1350.kevpos.integration;
 
 import se.kth.iv1350.kevpos.model.RegisterObserver;
@@ -6,7 +5,7 @@ import se.kth.iv1350.kevpos.util.FileOutputter;
 
 /**
  * Handles the logging to a file, of the total revenue since the start of the
- * application
+ * application.
  */
 public class TotalRevenueFileOutput extends FileOutputter implements RegisterObserver{
     

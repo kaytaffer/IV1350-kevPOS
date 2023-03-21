@@ -13,5 +13,4 @@ public class DatabaseUnreachableException extends RuntimeException{
     public DatabaseUnreachableException(){
         super("The database can't be reached.");      
     }
-    
 }

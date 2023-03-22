@@ -29,27 +29,27 @@ UML design documents related to the project
 
 `ItemNotFoundException.java` - thrown when an `ItemDTO`'s `identifier` does not match an identifier in the inventory database.
 
-`SalesLog.java` - Handles the logging of concluded `Sale`s and distributes relevant info to external systems.
+`SalesLog.java` - handles the logging of concluded `Sale`s and distributes relevant info to external systems.
 
-`TotalRevenueFileOutput.java` - 
+`TotalRevenueFileOutput.java` - handles the logging to a file, of the total revenue since the start of the application.
 
 ## model
 
-`CheckoutCart.java` - 
+`CheckoutCart.java` - Contains and manages `ItemDTO`s for the current `Sale`.
 
-`Item.java` - 
+`Item.java` - Represents an item to be bought at the point-of-sale, to be added to a `CheckoutCart`.
 
-`PaymentInfoDTO.java` - 
+`PaymentInfoDTO.java` - A DTO concerning information about the exchange of cash.
 
-`RecepitDTO.java` - 
+`RecepitDTO.java` - All final info regarding, and proof of, the concluded `Sale`.
 
-`Register.java` - 
+`Register.java` - Handles all logic concerning the exchange of cash at the conclusion of a `Sale`.
 
-`RegisterObserver.java` - 
+`RegisterObserver.java` - Observer interface that informs classes that implements it that the `Register` contains a new balance.
 
-`Sale.java` - 
+`Sale.java` - Contains information about the current state of the `Sale` in progress.
 
-`SaleStateDTO.java` - 
+`SaleStateDTO.java` - A data transfer object representing changes to the system, meant to be transferred to the `View`.
 
 ## startup
 

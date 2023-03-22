@@ -11,5 +11,4 @@ public interface RegisterObserver {
      * @param balance the changed balance implementing observers need to be informed of.
      */
     void notifyObserversBalanceHasChanged (double balance);
-    
 }

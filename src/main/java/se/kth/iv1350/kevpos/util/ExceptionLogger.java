@@ -3,7 +3,6 @@ package se.kth.iv1350.kevpos.util;
 
 import java.time.LocalDateTime;
 
-
 /**
  * Writes a log given certain exceptional states. 
  */

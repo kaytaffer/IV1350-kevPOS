@@ -38,11 +38,9 @@ public abstract class FileOutputter {
      */
     protected abstract String addMessage();
     
-    
     /**
      * Gets the name of the txt file to log to.
      * @return the name of the txt file to log to.
      */
     protected abstract String generateLogName();
-    
 }

@@ -57,9 +57,9 @@ UML design documents related to the project
 
 ## util/
 
-`ExceptionLogger.java` - 
+`ExceptionLogger.java` - Writes a log given certain exceptional states. 
 
-`FileOutputter.java` - 
+`FileOutputter.java` - Template superclass for objects that logs messages to files
 
 ## view
 

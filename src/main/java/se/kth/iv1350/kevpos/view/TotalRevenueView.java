@@ -1,9 +1,9 @@
-
 package se.kth.iv1350.kevpos.view;
+
 import se.kth.iv1350.kevpos.model.RegisterObserver;
 
 /**
- * Represents a screen for the user to view the current total revenue since the
+ * Placeholder: Represents a screen for the user to view the current total revenue since the
  * start of the application.
  */
 public class TotalRevenueView implements RegisterObserver {
@@ -24,7 +24,6 @@ public class TotalRevenueView implements RegisterObserver {
         showTotalRevenue(balance);
     }
     
-    
     /**
      * Shows the total income, the current balance in the <code>Register<code> 
      * on the user interface.
@@ -32,6 +31,4 @@ public class TotalRevenueView implements RegisterObserver {
     private void showTotalRevenue(double balance){
         System.out.println("Today's total revenue is: " + balance + " money units.");
     }
-    
-    
 }

@@ -63,9 +63,9 @@ UML design documents related to the project
 
 ## view
 
-`TotalRevenueView.java` - 
+`TotalRevenueView.java` - Placeholder: Represents a screen for the user to view the current total revenue since the start of the application.
 
-`View.java` - 
+`View.java` - A mostly unimplemented placeholder for the user interface. Contains a few hardcoded data entries to test the program functionality. 
 
 # src/test
 

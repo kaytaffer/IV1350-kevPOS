@@ -1,5 +1,5 @@
 
-# kevPOS
+# IV1350-kevPOS
 Code and tests for a Point-Of-Sale program in the course IV1350: Object Oriented Design at KTH.
 
 # Design/
